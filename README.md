@@ -192,7 +192,7 @@ You find the WAR File for Tomcat (after a successful build) here: `/opt/mainzell
 
 ## Firewall
 
-You should secure your server with a firewall. Here we use local linux firewall with 'ufw' interface. 'ufw' should be there by default.
+You should secure your server with a firewall. Here we use local linux firewall with `ufw` interface. `ufw` should be there by default.
 
 ```Shell
 ufw status
@@ -409,8 +409,9 @@ tail -f /var/log/postgresql/postgresql-14-main.log
 __API__
 ```Shell
 https://www.example.com/mainzelliste/
-
 ```
+
+__Hint:__ if you use Apache2 as reverse proxy, and you open this URL in your web browser, you need the trailing slash, to work!
 
 __iDAT-Admin-GUI__
 ```Shell
@@ -669,7 +670,7 @@ __Xms__ is the initial/minimum/start value.
 
 ## Show memory consumption of Tomcat
 
-Bash skript/command, showing current memory consumption of tomcat process (for minimal monitoring)
+Bash skript/command, showing estimation of current memory consumption of tomcat process (for minimal monitoring)
 
 ```Shell
 #!/bin/bash
@@ -689,7 +690,6 @@ API='jondoe23'
 
 SESSIONID=$(curl -v --silent -X POST -i $URL"/sessions" -H 'mainzellisteApiKey: '$API 2>&1 | grep sessionId | awk -F '"' '{print $4}')
 TOKEN=$(curl -v --silent -X POST -i $URL"/sessions/$SESSIONID/tokens" -d '{ type: "addPatient", data: {} }' -H 'mainzellisteApiVersion: 3.1' -H 'Content-Type: application/json' -H 'mainzellisteApiKey: '$API 2>&1 | grep addPatient | awk -F '"' '{print $4}')
-
 GUIURL=$URL"/html/createPatient?tokenId="$TOKEN
 
 echo "SessionId: " $SESSIONID
