@@ -607,6 +607,8 @@ pg_dump mainzelliste > mainzelliste.sql
 # crontab -e
 ```
 
+---
+
 ## Certbot
 
 renew SSL, create a cronjob
@@ -644,7 +646,9 @@ The folder `/test/` is now being served by Apache directly, and is not being pas
 
 __RAM:__ it is mainly the number of people you have in the Mainzelliste index, that determines the main memory consumption
 
-__CPU:__ mainly mainzelliste/tomcat and database will occupy your CPU cores. Observe the memory consumption with `htop` etc.
+__CPU:__ mainly mainzelliste/tomcat and database will occupy your CPU cores.
+
+Observe CPU and memory consumption with `htop` etc. See 'Show memory consumption of Tomcat' below.
 
 ### rough rule of thumb / experience values:
 
