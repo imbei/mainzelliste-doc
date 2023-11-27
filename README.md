@@ -33,6 +33,10 @@ This README helps you installing Mainzelliste __manually__ on a Linux system (__
 | 2023-12-01  | initial document, first version  |Juergen Riegel (jr)|
 </details>
 
+### Mainzelliste links:
+* [Overview & Functions](https://www.unimedizin-mainz.de/imbei/medical-informatics/ag-verbundforschung/mainzelliste.html?L=1)
+* [Download](https://bitbucket.org/medicalinformatics/mainzelliste)
+
 ### Other Mainzelliste documentation
 <details>
 <summary>Find more in depth documentation here</summary>
