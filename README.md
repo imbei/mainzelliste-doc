@@ -725,6 +725,67 @@ echo "PID:       " $PID
 echo ""
 ```
 
+### Example: create pseudonyms, only based on reference-ID
+
+This example describes the case, when you only have a reference-ID (let's say, a primary-pseudonym, person-ID, external ID, from other lists or software-systems). In this case, you can't do the record linkage on name, firstname, date of birth, etc. to create a pseudonym.
+
+```Shell
+# change the existing config, used in this docs, see above
+# vim /etc/mainzelliste/mainzelliste.conf
+
+# e.g. we want 2 pseudonyms, for a given foreign/external ID (fid)
+idgenerators = psn1, psn2, fid
+
+#  ElasticIDGenerator is used for randomly generated id types with the flexible length and vocabulary
+# the pre-defined vocabulary has no 1, 0, I, L, O, e.g. to to avoid confusion in pseudonym strings
+idgenerator.psn1 = ElasticIDGenerator
+idgenerator.psn1.vocabulary = 23456789ACDEFGHJKMNPQURTUVWXYZ
+idgenerator.psn1.length = 10
+
+idgenerator.psn2 = ElasticIDGenerator
+idgenerator.psn2.vocabulary = 23456789ACDEFGHJKMNPQURTUVWXYZ
+idgenerator.psn2.length = 10
+
+# for the external / foreign ID, add this line
+idgenerator.fid = ExternalIDGenerator
+```
+
+Restart tomcat: `service tomcat10 restart`
+
+__Hint__: if you are testing, and you already have some old entries in the postgres DB, and you changed some major things like primary pseudonym configuration, it's a good advice to clear the database, before you proceed ... see section "Database restore" for more (stop tomcat, DROP db, CREATE db, start tomcat, to get fresh/empty db)
+
+
+Now we can talk to the API with the following BASH script, to aquire some pseudonyms, for the given "fid" (foreign/external ID) "21234343453453454":
+```Shell
+#!/bin/bash
+
+URL='https://xyz.example.com/mainzelliste'
+API='jondoe23'
+
+SESSIONID=$(curl --insecure -v --silent -X POST -i $URL"/sessions" -H 'mainzellisteApiKey: '$API 2>&1 | grep sessionId | awk -F '"' '{print $4}')
+TOKEN=$(curl --insecure --silent -X POST -i $URL"/sessions/$SESSIONID/tokens" -d '{"type": "addPatient", "data": {"idtypes": ["psn1", "psn2"]}}' -H 'mainzellisteApiVersion: 3.1' -H 'Content-Type: application/json' -H 'mainzellisteApiKey: '$API 2>&1 | grep addPatient | awk -F '"' '{print $4}')
+PID=$(curl --insecure --silent -X POST -i $URL"/patients?tokenId="$TOKEN -d '{ "ids" : {"fid": "21234343453453454"} }' -H 'mainzellisteApiVersion: 3.1' -H 'Content-Type: application/json' -H 'mainzellisteApiKey: '$API 2>&1 )
+
+echo ""
+echo "SessionId: " $SESSIONID
+echo "Token:     " $TOKEN
+echo "PID:       " $PID
+echo ""
+```
+
+As a result, we get something like this:
+```Shell
+SessionId:  0f04d49e-81df-4987-8e9e-bfb1b060b5ed
+Token:      58c25ba9-8a97-4a90-8eb3-ee33b4fce6dc
+
+ [
+{"idType":"psn1","idString":"psn1XFNJEFH448","tentative":false,"uri":"https:\/\/xyz.example.com\/mainzelliste\/patients\/psn1\/psn1XFNJEFH448"},
+{"idType":"psn2","idString":"psn2UQCQVZTG79","tentative":false,"uri":"https:\/\/xyz.example.com\/mainzelliste\/patients\/psn2\/psn2UQCQVZTG79"},
+{"idType":"fid","idString":"21234343453453454","tentative":false,"uri":"https:\/\/xyz.example.com\/mainzelliste\/patients\/fid\/21234343453453454"}
+]
+```
+
+
 ### More examples
 Find some __more examples__ here:
 
