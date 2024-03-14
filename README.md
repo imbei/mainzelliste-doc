@@ -785,6 +785,12 @@ Token:      58c25ba9-8a97-4a90-8eb3-ee33b4fce6dc
 ]
 ```
 
+You can set a prefix for the pseudonyms with:
+```Shell
+# vim /etc/mainzelliste/mainzelliste.conf
+idgenerator.psn1.prefix = ABC
+idgenerator.psn2.prefix = XYZ
+```
 
 ### More examples
 Find some __more examples__ here:
