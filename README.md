@@ -31,6 +31,9 @@ This README helps you installing Mainzelliste __manually__ on a Linux system (__
 | change date  | comment | contributor|
 | ------------- | ------------- |-------------|
 | 2023-12-01  | initial document, first version  |Juergen Riegel (jr)|
+| 2024-03-14  | added example for external ID, activate root |Juergen Riegel (jr)|
+| 2024-03-15  | changed versions Mainzelliste 1.12.0, Tomcat 10.1.19 |Juergen Riegel (jr)|
+
 </details>
 
 ### Mainzelliste links:
@@ -74,7 +77,7 @@ reboot
 ---
 
 ## Java
-The preinstalled Java version of Ubuntu 22 is wrong/too old for Tomcat10/Mainzellliste 1.11, fetch a newer one.
+The preinstalled Java version of Ubuntu 22 is wrong/too old for Tomcat10/Mainzellliste 1.12, fetch a newer one.
 ```Shell
 apt-get install openjdk-17-jdk -y
 ```
@@ -82,15 +85,15 @@ apt-get install openjdk-17-jdk -y
 ---
 
 ## Tomcat 10
-The Tomcat version of Ubuntu 22 (available from repositories via apt) is too old for Mainzellliste 1.11, fetch (at least) Tomcat 10, which is required by Mainzelliste 1.11.
+The Tomcat version of Ubuntu 22 (available from repositories via apt) is too old for Mainzellliste 1.12, fetch (at least) Tomcat 10, which is required by Mainzelliste 1.12.
 
 Create Folder, Download latest TAR from Tomcat, Unzip, set symbolic link to 'latest', add user for tomcat, set suitable user rights
 ```Shell
 mkdir /opt/tomcat
 cd /opt/tomcat
-wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.16/bin/apache-tomcat-10.1.16.tar.gz
-tar xzf apache-tomcat-10.1.16.tar.gz
-ln -s apache-tomcat-10.1.16 latest
+wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.19/bin/apache-tomcat-10.1.19.tar.gz
+tar xzf apache-tomcat-10.1.19.tar.gz
+ln -s apache-tomcat-10.1.19 latest
 useradd -m -U -d /opt/tomcat -s /bin/false tomcat
 sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
 ```
@@ -350,7 +353,7 @@ All necessary files and folders of the mainzelliste-Application will be unzipped
 
 If all went ok, your mainzelliste is now running under: `https://www.example.com/mainzelliste/`
 
-Showing something like: `This is Mainzelliste running version 1.11.0 for Mainzelliste.`
+Showing something like: `This is Mainzelliste running version 1.12.0 for Mainzelliste.`
 
 __Congratulations, you successfully deployed mainzelliste manually on your system!__ :sweat_smile: :unicorn:
 
