@@ -59,8 +59,13 @@ This README helps you installing Mainzelliste __manually__ on a Linux system (__
 ---
 
 ## Linux Ubuntu 22.04 LTS
-Fetch the latest updates for your linux. reboot (optional) if new kernel etc.
+Enable root (optional), fetch the latest updates for your linux. reboot (optional) if new kernel etc.
 ```Shell
+# enable root, choose password
+sudo passwd root
+su
+
+# fetch updates
 apt-get update
 apt-get upgrade -y
 reboot
