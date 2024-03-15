@@ -1,5 +1,5 @@
 # Mainzelliste: manual installation, deployment basics, examples
-This README helps you installing Mainzelliste __manually__ on a Linux system (__without__ using the supplied __Docker__ environment), and provides some additional information and thoughts on possible deployment tasks need to be taken. The initial steps will take about 20 minutes, based on a running linux with SSH root access.
+This README helps you installing Mainzelliste (1.11 and later/higher) __manually__ on a Linux (Ubuntu 22) system (__without__ using the supplied __Docker__ environment), and provides some additional information and thoughts on possible deployment tasks need to be taken. The initial steps will take about 20 minutes, based on a running linux with SSH root access.
 
 ### Overview of the proposed solution in this manual:
 
