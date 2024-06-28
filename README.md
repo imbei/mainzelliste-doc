@@ -709,6 +709,15 @@ echo "Token:     " $TOKEN
 echo "GUI-URL:   " $GUIURL
 ```
 
+You will get a Link from the script like:
+```Shell
+https://xyz.example.com/mainzelliste/html/createPatient?tokenId=1cb8468f-a290-4600-a4b4-8ebc725c6c06
+```
+
+Put it in your browser, will show you the GUI:
+
+![Mainzelliste GUI createPatient](mainzelliste-gui-createPatient.png)
+
 ### Bash script to create session/token/addPatient, to add a patient by API
 ```Shell
 #!/bin/bash
