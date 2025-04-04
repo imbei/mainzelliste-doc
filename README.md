@@ -660,8 +660,11 @@ Observe CPU and memory consumption with `htop` etc. See 'Show memory consumption
 
 ### rough rule of thumb / experience values:
 
-* small index (up to 1000 person index): 8gb of RAM, 2 CPU cores
+* small index (up to 1'000 person index): 8gb of RAM, 2 CPU cores (is completely sufficient / "huge")
+* mid index (like 50'000 person index): 8gb of RAM (set Tomcat max RAM to e.g. Xmx2048M or Xmx4096M  etc., see below)
 * huge index  (1.5 million person index): 64gb of RAM
+
+__Hint:__ If you fill the record linkage index of the Mainzelliste, and the index gets quite big, and you possibly hit the memory limits of the Tomcat process (default: 1024 MB), the API may accept adding new person to the index. But if you restart the Tomcat or the Server, it can happen, that the Mainzelliste-Container will not start up. In the Logfiles, you will only recognize the start and stop of the Tomcat container, and no meaningful error messages or fatal exceptions, even in DEBUG mode. In this case, try adding some more RAM to the Tomcat process (see below).
 
 ---
 
