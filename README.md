@@ -10,7 +10,7 @@ This README helps you installing Mainzelliste (1.11 and later/higher) __manually
 <summary>prerequisites/conditions/restrictions/assumptions of this manual:</summary>
   
 + Mainzelliste 1.11 (and later)
-+ Ubuntu 22.04.3 LTS (comes with certain versions of Java, Tomcat, Apache, etc.) [End of Standard Support: June 2027]
++ Ubuntu 22.04.3 LTS (comes with certain versions of Java, Tomcat, Apache, etc.) [End of Standard Support: June 2027, see: https://ubuntu.com/about/release-cycle]
 + Tomcat 10 (is required since Mainzelliste 1.11)
 + Postgres 14 (or other DB like MariaDB / MySQL etc.)
 + no usage of supplied Docker environment!
@@ -33,6 +33,7 @@ This README helps you installing Mainzelliste (1.11 and later/higher) __manually
 | 2023-12-01  | initial document, first version  |Juergen Riegel (jr)|
 | 2024-03-14  | added example for external ID, activate root |Juergen Riegel (jr)|
 | 2024-03-15  | changed versions Mainzelliste 1.12.0, Tomcat 10.1.19 |Juergen Riegel (jr)|
+| 2025-04-04  | minor text changes, improvements, adjustments, clarifications |Juergen Riegel (jr)|
 
 </details>
 
